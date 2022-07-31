@@ -1,13 +1,13 @@
 package com.informatorio.news.controllers;
 
 import com.informatorio.news.persitences.entity.Article;
+import com.informatorio.news.persitences.entity.ArticleStatus;
 import com.informatorio.news.services.ArticleService;
 import com.informatorio.news.services.dto.ArticleInDTO;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import java.net.http.HttpResponse;
 import java.util.List;
 
 @RestController
@@ -23,5 +23,21 @@ public class ArticleController {
     @PostMapping
     public Article createArticle(@RequestBody ArticleInDTO articleInDTO) {
         return  this.articleService.createArticle(articleInDTO);
+    }
+
+    @GetMapping
+    public List<Article> findAll(){
+        return this.articleService.findAll();
+    }
+
+    @GetMapping("/status/{status}")
+    public List<Article> findAllByStatus(@PathVariable("status")ArticleStatus status) {
+        return this.articleService.findAllByArticleStatus(status);
+    }
+
+    @PatchMapping("/mark_as_published/{id}")
+    public ResponseEntity<Void> markAsPublished(@PathVariable("id") Long id) {
+        this.articleService.updateArticleAsPublished(id);
+        return ResponseEntity.noContent().build();
     }
 }

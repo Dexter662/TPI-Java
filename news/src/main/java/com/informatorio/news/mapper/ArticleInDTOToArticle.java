@@ -5,8 +5,6 @@ import com.informatorio.news.persitences.entity.ArticleStatus;
 import com.informatorio.news.services.dto.ArticleInDTO;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
-
 @Component
 public class ArticleInDTOToArticle implements IMapper<ArticleInDTO, Article>{
 
