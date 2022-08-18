@@ -1,12 +1,12 @@
 package com.informatorio.news.services.dto;
 
-import com.informatorio.news.persitences.entity.ArticleStatus;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
 @Data
 public class ArticleInDTO {
+    private Long id;
     private String title;
     private String description;
     private String url;

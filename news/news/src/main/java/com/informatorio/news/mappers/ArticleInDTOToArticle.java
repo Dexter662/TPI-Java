@@ -1,7 +1,7 @@
-package com.informatorio.news.mapper;
+package com.informatorio.news.mappers;
 
-import com.informatorio.news.persitences.entity.Article;
-import com.informatorio.news.persitences.entity.ArticleStatus;
+import com.informatorio.news.models.Article;
+import com.informatorio.news.models.ArticleStatus;
 import com.informatorio.news.services.dto.ArticleInDTO;
 import org.springframework.stereotype.Component;
 
@@ -11,6 +11,7 @@ public class ArticleInDTOToArticle implements IMapper<ArticleInDTO, Article>{
     @Override
     public Article map(ArticleInDTO in) {
         Article article = new Article();
+        article.setId(in.getId());
         article.setTitle(in.getTitle());
         article.setDescription(in.getDescription());
         article.setUrl(in.getUrl());

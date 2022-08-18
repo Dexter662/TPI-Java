@@ -1,13 +1,12 @@
 package com.informatorio.news.controllers;
 
-import com.informatorio.news.persitences.entity.Article;
-import com.informatorio.news.persitences.entity.ArticleStatus;
+import com.informatorio.news.models.Article;
+import com.informatorio.news.models.ArticleStatus;
 import com.informatorio.news.services.ArticleService;
 import com.informatorio.news.services.dto.ArticleInDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.http.HttpResponse;
 import java.util.List;
 
 @RestController
@@ -31,13 +30,25 @@ public class ArticleController {
     }
 
     @GetMapping("/status/{status}")
-    public List<Article> findAllByStatus(@PathVariable("status")ArticleStatus status) {
+    public List<Article> findAllByStatus(@PathVariable("status") ArticleStatus status) {
         return this.articleService.findAllByArticleStatus(status);
     }
 
     @PatchMapping("/mark_as_published/{id}")
     public ResponseEntity<Void> markAsPublished(@PathVariable("id") Long id) {
         this.articleService.updateArticleAsPublished(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteArticle(@PathVariable("id") Long id) {
+        this.articleService.deleteArticleById(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/edit")
+    public ResponseEntity<Void> updateArticle(@RequestBody ArticleInDTO articleInDTO) {
+        this.articleService.updateArticle(articleInDTO);
         return ResponseEntity.noContent().build();
     }
 }

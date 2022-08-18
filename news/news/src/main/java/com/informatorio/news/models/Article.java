@@ -1,4 +1,4 @@
-package com.informatorio.news.persitences.entity;
+package com.informatorio.news.models;
 
 import lombok.Data;
 
