@@ -51,4 +51,9 @@ public class ArticleController {
         this.articleService.updateArticle(articleInDTO);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/search/{word}")
+    public List<Article> search(@PathVariable("word") String word) {
+        return this.articleService.findAllArticleByWord(word);
+    }
 }

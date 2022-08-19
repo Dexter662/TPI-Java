@@ -62,4 +62,8 @@ public class ArticleService {
         Article article =  articleInDTOToArticle.map(articleInDTO);
         return this.articleRepository.saveAndFlush(article);
     }
+
+    public List<Article> findAllArticleByWord(String word) {
+        return articleRepository.findAllArticleByWord(word);
+    }
 }
