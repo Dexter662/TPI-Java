@@ -7,12 +7,21 @@
 	},
 	"item": [
 		{
-			"name": "Listar todos los Articulos",
+			"name": "Crear Autor",
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstname\":\"Ramona Daniela\",\n    \"lastname\":\"Alegre\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "http://localhost:8080/api/v1/articles",
+					"raw": "http://localhost:8080/api/v1/authors",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -21,7 +30,235 @@
 					"path": [
 						"api",
 						"v1",
-						"articles"
+						"authors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar todos los Autores",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/authors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"authors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar Autor por palabra clave",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/authors/search/eli",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"authors",
+						"search",
+						"eli"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar un Autor",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/authors/delete/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"authors",
+						"delete",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar Autor",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstname\":\"Andres Daniel\",\n    \"lastname\":\"Ramos\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/authors/edit/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"authors",
+						"edit",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Source",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"diario norte\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/sources",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"sources"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Sources",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/sources",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"sources"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar Sources por palabra clave",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/sources/search/dia",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"sources",
+						"search",
+						"dia"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Source",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/sources/delete/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"sources",
+						"delete",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar Source",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"infobae\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/sources/edit/8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"sources",
+						"edit",
+						"8"
 					]
 				}
 			},
@@ -34,7 +271,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n        \"title\": \"La explicación de las nuevas fotos del universo que reveló la NASA con el potente telescopio James Webb\",\n        \"description\": \"El James Webb es el mayor y más potente telescopio jamás lanzado al espacio que promete revolucionar la astronomía tal como la conocemos hasta hoy\",\n        \"url\": \"https://www.infobae.com/america/ciencia-america/2022/07/12/las-nuevas-fotos-del-universo-que-revelo-la-nasa-con-el-potente-telescopio-james-webb/\",\n        \"urlToImage\": \"https://www.infobae.com/new-resizer/pkGzIXJo-72Oh5wfMAwom1LfKYI=/992x558/filters:format(webp):quality(85)/cloudfront-us-east-1.images.arcpublishing.com/infobae/SYIEFXJK2FDFXHKJN22TPZE23E.jpg\",\n        \"publishedAt\": \"\",\n        \"content\": \"Las imágenes incluyen detalles sobre la atmósfera de un lejano planeta gaseoso, una \\\"guardería estelar\\\" donde se forman estrellas, un quinteto de galaxias enfrascadas en una danza de encuentros cercanos y la nube de gas alrededor de una moribunda estrella\",\n        \"author\": \"infobae\",\n        \"source\": \"ciencia\"\n    }",
+					"raw": "{\n        \"title\": \"La explicación de las nuevas fotos del universo que reveló la NASA con el potente telescopio James Webb\",\n        \"description\": \"El James Webb es el mayor y más potente telescopio jamás lanzado al espacio que promete revolucionar la astronomía tal como la conocemos hasta hoy\",\n        \"url\": \"https://www.infobae.com/america/ciencia-america/2022/07/12/las-nuevas-fotos-del-universo-que-revelo-la-nasa-con-el-potente-telescopio-james-webb/\",\n        \"urlToImage\": \"https://www.infobae.com/new-resizer/pkGzIXJo-72Oh5wfMAwom1LfKYI=/992x558/filters:format(webp):quality(85)/cloudfront-us-east-1.images.arcpublishing.com/infobae/SYIEFXJK2FDFXHKJN22TPZE23E.jpg\",\n        \"publishedAt\": \"2022-08-20\",\n        \"content\": \"Las imágenes incluyen detalles sobre la atmósfera de un lejano planeta gaseoso, una \\\"guardería estelar\\\" donde se forman estrellas, un quinteto de galaxias enfrascadas en una danza de encuentros cercanos y la nube de gas alrededor de una moribunda estrella\",\n        \"author\": 1,\n        \"source\": 2\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -64,13 +301,34 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n        \"title\": \"Prueba 1\",\n        \"description\": \"Esto es una prueba de creacion de articulo\",\n        \"url\": \"http://news.net/prueba1\",\n        \"urlToImage\": \"http://news.net/prueba1-image1.jpj\",\n        \"publishedAt\": \"\",\n        \"content\": \"El contenido de esta prueba es solo texto sin sentido\",\n        \"author\": \"Gabriel\",\n        \"source\": \"Informatorio\"\n    }",
+					"raw": "{\n        \"title\": \"La explicación de las nuevas fotos del universo que reveló la NASA con el potente telescopio James Webb\",\n        \"description\": \"El James Webb es el mayor y más potente telescopio jamás lanzado al espacio que promete revolucionar la astronomía tal como la conocemos hasta hoy\",\n        \"url\": \"https://www.infobae.com/america/ciencia-america/2022/07/12/las-nuevas-fotos-del-universo-que-revelo-la-nasa-con-el-potente-telescopio-james-webb/\",\n        \"urlToImage\": \"https://www.infobae.com/new-resizer/pkGzIXJo-72Oh5wfMAwom1LfKYI=/992x558/filters:format(webp):quality(85)/cloudfront-us-east-1.images.arcpublishing.com/infobae/SYIEFXJK2FDFXHKJN22TPZE23E.jpg\",\n        \"publishedAt\": \"\",\n        \"content\": \"Las imágenes incluyen detalles sobre la atmósfera de un lejano planeta gaseoso, una \\\"guardería estelar\\\" donde se forman estrellas, un quinteto de galaxias enfrascadas en una danza de encuentros cercanos y la nube de gas alrededor de una moribunda estrella\",\n        \"author\": 1,\n        \"source\": 2\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
 						}
 					}
 				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/articles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"articles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar todos los Articulos",
+			"request": {
+				"method": "GET",
+				"header": [],
 				"url": {
 					"raw": "http://localhost:8080/api/v1/articles",
 					"protocol": "http",
@@ -238,7 +496,45 @@
 			"name": "Editar Articulo",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/articles/edit/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"articles",
+						"edit",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar Articulo por palabra clave",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/articles/search/exuberantemente",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"articles",
+						"search",
+						"exuberantemente"
+					]
+				}
 			},
 			"response": []
 		}

@@ -7,6 +7,7 @@ import com.informatorio.news.services.dto.ArticleInDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -20,7 +21,7 @@ public class ArticleController {
     }
 
     @PostMapping
-    public Article createArticle(@RequestBody ArticleInDTO articleInDTO) {
+    public Article createArticle(@Valid @RequestBody ArticleInDTO articleInDTO) {
         return  this.articleService.createArticle(articleInDTO);
     }
 
@@ -46,9 +47,9 @@ public class ArticleController {
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("/edit")
-    public ResponseEntity<Void> updateArticle(@RequestBody ArticleInDTO articleInDTO) {
-        this.articleService.updateArticle(articleInDTO);
+    @PutMapping("/edit/{id}")
+    public ResponseEntity<Void> updateArticle(@PathVariable("id") Long id, @Valid @RequestBody ArticleInDTO articleInDTO) {
+        this.articleService.updateArticle(id, articleInDTO);
         return ResponseEntity.noContent().build();
     }
 

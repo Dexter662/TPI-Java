@@ -30,7 +30,7 @@ public class ArticleService {
     }
 
     public List<Article> findAll() {
-        return this.articleRepository.findAll();
+        return (List<Article>) this.articleRepository.findAll();
     }
 
     public List<Article> findAllByArticleStatus(ArticleStatus status) {
@@ -54,11 +54,12 @@ public class ArticleService {
         this.articleRepository.deleteById(id);
     }
 
-    public Article updateArticle(ArticleInDTO articleInDTO) {
-        Optional<Article> optionalArticle = this.articleRepository.findById(articleInDTO.getId());
+    public Article updateArticle(Long id, ArticleInDTO articleInDTO) {
+        Optional<Article> optionalArticle = this.articleRepository.findById(id);
         if (optionalArticle.isEmpty()) {
             throw new ToDoExceptions("Article not found", HttpStatus.NOT_FOUND);
         }
+        articleInDTO.setId(optionalArticle.get().getId());
         Article article =  articleInDTOToArticle.map(articleInDTO);
         return this.articleRepository.saveAndFlush(article);
     }
@@ -67,7 +68,7 @@ public class ArticleService {
         if (word.length() >= 3) {
             return articleRepository.findAllArticleByWord(word);
         } else {
-            throw new ToDoExceptions("Debe ingresar al menos 3 caracteres", HttpStatus.LENGTH_REQUIRED);
+            throw new ToDoExceptions("You must enter at least 3 characters", HttpStatus.LENGTH_REQUIRED);
         }
     }
 }

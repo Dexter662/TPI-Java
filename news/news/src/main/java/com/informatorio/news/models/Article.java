@@ -3,29 +3,38 @@ package com.informatorio.news.models;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Data
 @Entity
 @Table(name = "article")
 public class Article {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
     private String title;
+    @Column(nullable = false)
     private String description;
+    @Column(nullable = false)
     private String url;
     private String urlToImage;
-    private LocalDateTime publishedAt;
+    @Column(nullable = false)
+    private LocalDate publishedAt;
+    @Column(length = 4000)
     private String content;
-    private String author;
-    private String source;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "author_id", nullable=false)
+    private Author author;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "source_id", nullable=false)
+    private Source source;
     private ArticleStatus articleStatus;
 
     public Article() {
     }
 
-    public Article(Long id, String title, String description, String url, String urlToImage, LocalDateTime publishedAt, String content, String author, String source, ArticleStatus articleStatus) {
+    public Article(Long id, String title, String description, String url, String urlToImage, LocalDate publishedAt, String content, Author author, Source source, ArticleStatus articleStatus) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -38,7 +47,7 @@ public class Article {
         this.articleStatus = articleStatus;
     }
 
-    public Article(String title, String description, String url, String urlToImage, LocalDateTime publishedAt, String content, String author, String source, ArticleStatus articleStatus) {
+    public Article(String title, String description, String url, String urlToImage, LocalDate publishedAt, String content, Author author, Source source, ArticleStatus articleStatus) {
         this.title = title;
         this.description = description;
         this.url = url;
