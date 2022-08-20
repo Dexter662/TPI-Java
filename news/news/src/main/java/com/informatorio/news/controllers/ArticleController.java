@@ -53,7 +53,7 @@ public class ArticleController {
     }
 
     @GetMapping("/search/{word}")
-    public List<Article> search(@PathVariable("word") String word) {
+    public List<Article> search(@PathVariable("word") String word){
         return this.articleService.findAllArticleByWord(word);
     }
 }

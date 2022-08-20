@@ -63,7 +63,11 @@ public class ArticleService {
         return this.articleRepository.saveAndFlush(article);
     }
 
-    public List<Article> findAllArticleByWord(String word) {
-        return articleRepository.findAllArticleByWord(word);
+    public List<Article> findAllArticleByWord(String word){
+        if (word.length() >= 3) {
+            return articleRepository.findAllArticleByWord(word);
+        } else {
+            throw new ToDoExceptions("Debe ingresar al menos 3 caracteres", HttpStatus.LENGTH_REQUIRED);
+        }
     }
 }

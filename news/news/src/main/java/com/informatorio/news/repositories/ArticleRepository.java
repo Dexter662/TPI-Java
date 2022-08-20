@@ -16,8 +16,9 @@ public interface ArticleRepository extends JpaRepository<Article, Long> {
     @Query(value = "UPDATE `article` SET `article_status`= 0 WHERE id=:id", nativeQuery = true)
     public void markArticleAsPublished(@Param("id") Long id);
 
-    @Query("SELECT a FROM Article a WHERE a.title LIKE %?1%"
-            + "OR a.description LIKE %?1%"
-            + "OR a.content LIKE %?1%")
+    @Query("SELECT a FROM Article a WHERE a.articleStatus = 0"
+            + " AND a.title LIKE %?1%"
+            + " OR a.description LIKE %?1%"
+            + " OR a.content LIKE %?1%")
     public List<Article> findAllArticleByWord(String word);
 }
